@@ -566,6 +566,10 @@ public func rateApp() {
     Manager.defaultManager.rateApp()
 }
 
+public func dontRate() {
+    Manager.defaultManager.dontRate()
+}
+
 #if os(iOS)
     /*
      * Tells Armchair to immediately close any open rating modals
@@ -1380,7 +1384,7 @@ open class Manager : ArmchairManager {
     #else
     #endif
     
-    private func dontRate() {
+    fileprivate func dontRate() {
         userDefaultsObject?.setBool(true, forKey: keyForArmchairKeyType(ArmchairKey.DeclinedToRate))
         userDefaultsObject?.synchronize()
         if let closure = didDeclineToRateClosure {
